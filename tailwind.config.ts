@@ -41,7 +41,10 @@ const config: Config = {
         cursor: "#14FFEC",
         c8: "#14FFEC",
       }
-  },
+    },
+    fontFamily: {
+      source: ['SourceCodePro', 'mono'],
+    },
   },
 };
 export default config;

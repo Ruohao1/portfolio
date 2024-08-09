@@ -19,10 +19,12 @@ const Header: React.FC = () => {
 
   return (
     <header className="flex w-full justify-between items-center h-24 fixed top-0 transition-all duration-300">
-      <div className="logo px-10">
-        <a href="/">Logo</a>
+      <div className="text-cursor px-10">
+        <a href="/">
+          <h2>Logo</h2>
+        </a>
       </div>
-      <div className="navbar ">
+      <div className="navbar px-10">
         <ul className="flex">
           <li className="px-5">
             <a href="/#about">About</a>
@@ -36,7 +38,7 @@ const Header: React.FC = () => {
           <li className="px-5">
             <a href="/#education">Education</a>
           </li>
-          <li className="px-5">
+          <li className="pl-5">
             <a href="/#contact">Contact</a>
           </li>
         </ul>

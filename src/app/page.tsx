@@ -1,7 +1,7 @@
 // src/app/page.tsx
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 
@@ -27,7 +27,15 @@ const Home: React.FC = () => {
     <>
       <Header />
       <main>
-        <section id="about" className="flex justify-center items-center">
+        <section id="hero">
+          <RevealOnScroll>
+            <h1>Cédric Lin</h1>
+          </RevealOnScroll>
+        </section>
+        <section
+          id="about"
+          className="flex justify-center content-center items-center"
+        >
           <RevealOnScroll>
             <h1>About section</h1>
           </RevealOnScroll>

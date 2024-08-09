@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,8 +22,19 @@ section {
 }
 
 body {
-  @apply bg-background text-text w-screen;
+  @apply bg-background text-text font-source w-screen;
+}
 
+h1 {
+  @apply text-cursor font-extrabold text-5xl pb-10;
+}
+
+h2 {
+  @apply font-bold;
+}
+
+header {
+  z-index: 1;
 }
 
 section {
@@ -39,5 +52,11 @@ a {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer base {
+  html {
+      font-family: SourceCodePro;
   }
 }

@@ -19,6 +19,7 @@ export function RevealOnScroll({ children }: { children: React.ReactNode }) {
     }
 
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       const currentRef = ref.current;
       if (currentRef) {
         scrollObserver.unobserve(currentRef);
