@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-function RevealOnScroll({ children }: { children: React.ReactNode }) {
-  const [isVisible, setIsVisible] = useState<Boolean>(false);
+import React from "react";
+
+export function RevealOnScroll({ children }: { children: React.ReactNode }) {
+  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ function RevealOnScroll({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  const classes = `transition-opacity duration-2000 ${
+  const classes = `transition-opacity duration-1000 ${
     isVisible ? "opacity-100" : "opacity-0"
   }`;
 
@@ -34,5 +36,3 @@ function RevealOnScroll({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
-
-export default RevealOnScroll;

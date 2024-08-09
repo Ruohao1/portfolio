@@ -3,7 +3,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
-import RevealOnScroll from "@/hooks/useRevealOnScroll";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 const Home: React.FC = () => {
   const [headerHeight, setheaderHeight] = useState<number | undefined>(0);
@@ -28,9 +28,9 @@ const Home: React.FC = () => {
       <Header />
       <main>
         <section id="about" className="flex justify-center items-center">
-          <div>
+          <RevealOnScroll>
             <h1>About section</h1>
-          </div>
+          </RevealOnScroll>
         </section>
         <section id="experience">
           <RevealOnScroll>
