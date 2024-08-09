@@ -13,8 +13,35 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-    },
+      colors:  {
+        black: "#06080A",
+        c1: "#06080A",
+
+        charcoal: "#212121",
+        c2: "#212121",
+        background: "#212121",
+
+        gunmetal: "#323232",
+        c3: "#323232",
+
+        slateblue: "#58748A",
+        c4: "#58748A",
+
+        lightslategrey: "#6C95A6",
+        c5: "#6C95A6",
+
+        palecyan: "#AED1DC",
+        text: "#AED1DC",
+        c6: "#AED1DC",
+
+        darkcyan: "#0D7377",
+        c7: "#0D7377",
+
+        electriccyan: "#14FFEC",
+        cursor: "#14FFEC",
+        c8: "#14FFEC",
+      }
   },
-  plugins: [],
+  },
 };
 export default config;
