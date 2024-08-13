@@ -1,0 +1,22 @@
+/* Navigation Dots Bar */
+.nav-dots {
+position: fixed;
+top: 50%;
+left: 20px;
+transform: translateY(-50%);
+display: flex;
+flex-direction: column;
+}
+
+.dot {
+height: 15px;
+width: 15px;
+background-color: #bbb;
+margin: 10px 0;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.dot.active {
+background-color: #333;
+}

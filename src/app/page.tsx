@@ -1,42 +1,32 @@
 // src/app/page.tsx
 "use client";
 
-import React, { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
+import { Hero } from "@/components/Sections/Hero";
+import NavigationDots from "@/components/NavigationDots";
 
 const Home: React.FC = () => {
-  const [headerHeight, setheaderHeight] = useState<number | undefined>(0);
-
-  useEffect(() => {
-    const updateHeaderHeight = () => {
-      const header = document.querySelector("header");
-
-      setheaderHeight(header?.offsetHeight);
-    };
-
-    updateHeaderHeight();
-    window.addEventListener("resize", updateHeaderHeight);
-
-    return () => {
-      window.addEventListener("resize", updateHeaderHeight);
-    };
-  }, []);
-
+  const sections = [
+    { id: "about" },
+    { id: "work" },
+    { id: "experience" },
+    { id: "education" },
+  ];
   return (
     <>
       <Header />
+      <NavigationDots sections={sections} />
       <main>
-        <section id="hero">
-          <RevealOnScroll>
-            <h1>Cédric Lin</h1>
-          </RevealOnScroll>
-        </section>
+        <Hero />
         <section
           id="about"
-          className="flex justify-center content-center items-center"
+          className="flex flex-col justify-center content-center items-center"
         >
           <RevealOnScroll>
+            <h1>About section</h1>
+          </RevealOnScroll>
+          <RevealOnScroll className="delay-75">
             <h1>About section</h1>
           </RevealOnScroll>
         </section>

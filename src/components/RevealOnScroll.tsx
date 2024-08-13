@@ -2,9 +2,17 @@ import { useEffect, useRef, useState } from "react";
 
 import React from "react";
 
-export function RevealOnScroll({ children }: { children: React.ReactNode }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef(null);
+interface RevealOnScrollProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export function RevealOnScroll({
+  children,
+  className = "",
+}: RevealOnScrollProps) {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const scrollObserver = new IntersectionObserver(([entry]) => {
@@ -14,13 +22,12 @@ export function RevealOnScroll({ children }: { children: React.ReactNode }) {
       }
     });
 
-    if (ref.current) {
-      scrollObserver.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      scrollObserver.observe(currentRef);
     }
 
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      const currentRef = ref.current;
       if (currentRef) {
         scrollObserver.unobserve(currentRef);
       }
@@ -29,7 +36,7 @@ export function RevealOnScroll({ children }: { children: React.ReactNode }) {
 
   const classes = `transition-opacity duration-1000 ${
     isVisible ? "opacity-100" : "opacity-0"
-  }`;
+  } ${className}`;
 
   return (
     <div ref={ref} className={classes}>

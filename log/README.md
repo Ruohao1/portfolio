@@ -4,9 +4,9 @@ Steps i've followed so far.
 
 1. React initilization along with next.js
 
-```bash
-$ npx create-next-app@latest
-```
+   ```bash
+   $ npx create-next-app@latest
+   ```
 
 2. Dockerize
 
@@ -24,4 +24,13 @@ $ npx create-next-app@latest
    docker push ruohao1/portfolio
    ```
 
-3.
+   - Using Docker compose instead
+
+   ```bash
+   docker compose up
+   ```
+
+3. Done a bit of html, css and javascript
+
+   - snap scrolling, animations (reveal on scroll, hide navbar on scroll)
+   - custom color palet, font
