@@ -8,24 +8,30 @@ interface Section {
 
 interface NavigationDotsProps {
   sections: Section[];
+  sectionRefs: React.MutableRefObject<React.RefObject<HTMLElement | null>[]>;
 }
 
-const NavigationDots: React.FC<NavigationDotsProps> = ({ sections }) => {
-  const [active, setActive] = useState<number>(0);
-  const sectionRefs = useRef(
-    sections.map(() => React.createRef<HTMLElement>())
-  );
+const NavigationDots: React.FC<NavigationDotsProps> = ({
+  sections,
+  sectionRefs,
+}) => {
+  const [active, setActive] = useState<number>(NaN);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = sectionRefs.current.findIndex(
-              (ref) => ref.current === entry.target
-            );
-            setActive(index);
-          }
-        });
+        if (entries.filter((entry) => entry.isIntersecting).length === 0) {
+          setActive(NaN);
+        } else {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = sectionRefs.current.findIndex(
+                (ref) => ref.current === entry.target
+              );
+              setActive(index);
+            }
+          });
+        }
       },
       {
         threshold: 0.5,
@@ -49,35 +55,27 @@ const NavigationDots: React.FC<NavigationDotsProps> = ({ sections }) => {
         }
       });
     };
-  }, [sections]);
+  }, [sections, sectionRefs]);
 
   return (
     <>
-      <div className="flex items-center fixed z-10 right-0 h-screen">
-        <ul>
+      <div className="flex items-center fixed z-10 right-2 h-screen">
+        <nav>
           {sections.map((section, index) => (
-            <li key={section.id}>
-              <span
-                className={`dot ${active === index ? "active" : ""}`}
-                onClick={() =>
-                  sectionRefs.current[index].current?.scrollIntoView({
-                    behavior: "smooth",
-                  })
-                }
-              >
-                {section.id}
-              </span>
-            </li>
+            <div
+              key={section.id}
+              className={`dot ${active === index ? "active" : ""}`}
+              onClick={() =>
+                sectionRefs.current[index].current?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+            >
+              <span className="dot-label">{section.id}</span>
+            </div>
           ))}
-        </ul>
+        </nav>
       </div>
-      {sections.map((section, index) => (
-        <section
-          key={section.id}
-          id={section.id}
-          ref={sectionRefs.current[index]}
-        />
-      ))}
     </>
   );
 };

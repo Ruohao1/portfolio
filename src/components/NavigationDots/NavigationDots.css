@@ -1,22 +1,47 @@
 /* Navigation Dots Bar */
-.nav-dots {
-position: fixed;
-top: 50%;
-left: 20px;
-transform: translateY(-50%);
-display: flex;
-flex-direction: column;
+.dot {
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 0.5rem;
+  position: relative;
+
+  @apply bg-text;
 }
 
-.dot {
-height: 15px;
-width: 15px;
-background-color: #bbb;
-margin: 10px 0;
-cursor: pointer;
-transition: background-color 0.3s;
+.dot-label {
+  display: none;
+  position: absolute;
+  top: 50%; /* Center vertically */
+  right: 100%; /* Position the label to the left of the dot */
+  transform: translateY(-50%);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+
+.dot:hover {
+  @apply bg-lightslategrey scale-125;
 }
 
 .dot.active {
-background-color: #333;
+  @apply bg-cursor scale-125;
+}
+
+.dot.active .dot-label,
+.dot:hover .dot-label {
+  display: block; /* Show label when dot is active or hovered */
+  @apply capitalize;
+}
+
+.dot:hover .dot-label {
+  @apply text-lightslategrey;
+}
+
+.dot.active .dot-label {
+  @apply text-cursor;
 }
